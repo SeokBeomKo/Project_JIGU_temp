@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
-    public delegate void GeneratedLevel(Room[,] rooms, List<Vector2> pos);
+    public delegate void GeneratedLevel(RoomData[,] rooms, List<Vector2> pos);
     public event GeneratedLevel OnGeneratedLevel;
 
-    public Dungeon dungeon;
+    public Room dungeon;
 
     [HideInInspector] public Vector2 worldSize; // : 월드의 크기 값 ( 중앙 기준점을 중심으로 반경 )
     [HideInInspector] public int numberOfRooms; // : 그리드 크기와 방의 개수를 정의
 
     public List<Vector2> takenPositions = new List<Vector2>(); // : 이미 존재하는 방의 위치를 저장하는 리스트
-    Room[,] rooms;      // : 2 차원 배열 방의 집합 ( 실제 방이 존재하는 그리드 값 )
+    RoomData[,] rooms;      // : 2 차원 배열 방의 집합 ( 실제 방이 존재하는 그리드 값 )
     int gridSizeX, gridSizeY;
 
     public GameObject roomWhiteObj; // : 방의 프리팹 오브젝트
@@ -37,8 +37,8 @@ public class LevelGenerator : MonoBehaviour
     void CreateRooms()
     {
         // : 초기 설정
-        rooms = new Room[gridSizeX * 2, gridSizeY * 2]; // : 그리드 크기에 맞게 방 배열 초기화
-        rooms[gridSizeX, gridSizeY] = new Room(Vector2.zero, RoomType.ENTER); // : 중앙에 입장 방 배치
+        rooms = new RoomData[gridSizeX * 2, gridSizeY * 2]; // : 그리드 크기에 맞게 방 배열 초기화
+        rooms[gridSizeX, gridSizeY] = new RoomData(Vector2.zero, RoomType.ENTER); // : 중앙에 입장 방 배치
         takenPositions.Insert(0, Vector2.zero); // : 생성한 방의 위치를 takenPosition 에 추가
         Vector2 checkPos = Vector2.zero; // : 새로운 방의 위치를 저장할 변수
 
@@ -68,7 +68,7 @@ public class LevelGenerator : MonoBehaviour
             }
             
             // : 위치 확정
-            rooms[(int) checkPos.x + gridSizeX, (int) checkPos.y + gridSizeY] = new Room(checkPos,RoomType.ROOM);
+            rooms[(int) checkPos.x + gridSizeX, (int) checkPos.y + gridSizeY] = new RoomData(checkPos,RoomType.ROOM);
             takenPositions.Insert(0,checkPos);
         }
 
@@ -187,7 +187,7 @@ public class LevelGenerator : MonoBehaviour
 	
     	for (int x = 0; x < maxX; x++) {
     	    for (int y = 0; y < maxY; y++) {
-    	        Room room = rooms[x, y];
+    	        RoomData room = rooms[x, y];
     	        if (room != null) 
                 {
                     // : 위쪽 방향의 문을 설정합니다. 
@@ -215,7 +215,7 @@ public class LevelGenerator : MonoBehaviour
     {
         foreach (Vector2 pos in takenPositions) 
         {
-            Room room = rooms[(int)pos.x + gridSizeX, (int)pos.y + gridSizeY];
+            RoomData room = rooms[(int)pos.x + gridSizeX, (int)pos.y + gridSizeY];
 
             if (room == null)
             {

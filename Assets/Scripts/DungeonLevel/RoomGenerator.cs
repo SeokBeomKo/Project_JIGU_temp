@@ -10,7 +10,7 @@ public class RoomGenerator : MonoBehaviour
 
     int gridSizeX, gridSizeY, tempGridX, tempGridY;
 
-    public void CreateRoom(Room[,] rooms, List<Vector2> takenPositions, Vector2 worldSize)
+    public void CreateRoom(RoomData[,] rooms, List<Vector2> takenPositions, Vector2 worldSize)
     {
         gridSizeX = Mathf.RoundToInt(worldSize.x); // 그리드의 가로 크기
         gridSizeY = Mathf.RoundToInt(worldSize.y); // 그리드의 세로 크기
@@ -28,7 +28,7 @@ public class RoomGenerator : MonoBehaviour
         }
     }
 
-    private GameObject SelectRoom(Room room)
+    private GameObject SelectRoom(RoomData room)
     {
         int random = Random.Range(0, roomLists[(int)room.direction].room.Count);
         GameObject selectedRoom = roomLists[(int)room.direction].room[random];

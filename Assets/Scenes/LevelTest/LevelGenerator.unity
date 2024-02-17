@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c22f463f5638eb447a312ca7f2d8c825, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomListArray:
+  roomLists:
   - {fileID: 6746012603043710757, guid: 669e24f3ca0323444aa6a1cc1f5cc73d, type: 3}
   - {fileID: 6182547212617839454, guid: 4fa5741c9c8e98e4c85c3c02f30b2abe, type: 3}
   - {fileID: 8527872410109229089, guid: 98537e955df72784bbaec0668814fa4b, type: 3}

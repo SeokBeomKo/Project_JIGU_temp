@@ -7,7 +7,7 @@ public class DungeonCenter : MonoBehaviour
     [SerializeField] public LevelGenerator levelGenerator;
     [SerializeField] public RoomGenerator roomGenerator;
 
-    [SerializeField] public Room[,] rooms;
+    [SerializeField] public RoomData[,] rooms;
     [SerializeField] public List<Vector2> takenPositions = new List<Vector2>();
 
     [Header("월드 크기 (반지름)")]
@@ -29,7 +29,7 @@ public class DungeonCenter : MonoBehaviour
         
     }
 
-    void CreateRooms(Room[,] roomValue, List<Vector2> posValue)
+    void CreateRooms(RoomData[,] roomValue, List<Vector2> posValue)
     {
         rooms = roomValue;
         takenPositions = posValue;

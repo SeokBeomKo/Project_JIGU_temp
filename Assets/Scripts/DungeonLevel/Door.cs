@@ -4,5 +4,14 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    [SerializeField] public string direction;
+    public delegate void EnterDoorHandle();
+    public event EnterDoorHandle onEnterDoor;
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.layer == LayerMask.GetMask("Player"))
+        {
+            onEnterDoor?.Invoke();
+        }
+    }
 }
