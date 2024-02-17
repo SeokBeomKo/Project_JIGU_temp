@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class RoomArray : MonoBehaviour
+public class RoomList : MonoBehaviour
 {
-    public GameObject[] room;
+    public List<GameObject> room;
 }

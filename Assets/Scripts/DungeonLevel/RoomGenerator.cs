@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class RoomGenerator : MonoBehaviour
 {
-    [SerializeField] public List<RoomArray> roomListArray;
+    [SerializeField] public List<RoomList> roomLists;
+    [SerializeField] public Transform roomsParent;
 
     int gridSizeX, gridSizeY, tempGridX, tempGridY;
 
@@ -21,7 +22,17 @@ public class RoomGenerator : MonoBehaviour
 
             if (rooms[tempGridX, tempGridY] == null)  return;
 
-            Debug.Log(rooms[tempGridX, tempGridY]);
+            Instantiate(SelectRoom(rooms[tempGridX, tempGridY]), roomsParent);
+
+            Debug.Log(rooms[tempGridX, tempGridY].direction);
         }
+    }
+
+    private GameObject SelectRoom(Room room)
+    {
+        int random = Random.Range(0, roomLists[(int)room.direction].room.Count);
+        GameObject selectedRoom = roomLists[(int)room.direction].room[random];
+        roomLists[(int)room.direction].room.RemoveAt(random);
+        return selectedRoom;
     }
 }
