@@ -18,7 +18,7 @@ public class DungeonCenter : MonoBehaviour
 
     private void Awake() 
     {
-        levelGenerator.OnGenerateLevel += SettingRooms;
+        levelGenerator.OnGeneratedLevel += CreateRooms;
 
         levelGenerator.numberOfRooms = numberOfRooms;
         levelGenerator.worldSize = worldSize;
@@ -29,9 +29,11 @@ public class DungeonCenter : MonoBehaviour
         
     }
 
-    void SettingRooms(Room[,] roomValue, List<Vector2> posValue)
+    void CreateRooms(Room[,] roomValue, List<Vector2> posValue)
     {
         rooms = roomValue;
         takenPositions = posValue;
+
+        roomGenerator.CreateRoom(rooms, takenPositions, worldSize);
     }
 }

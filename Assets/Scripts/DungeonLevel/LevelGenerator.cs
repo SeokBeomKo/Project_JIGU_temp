@@ -5,7 +5,7 @@ using UnityEngine;
 public class LevelGenerator : MonoBehaviour
 {
     public delegate void GeneratedLevel(Room[,] rooms, List<Vector2> pos);
-    public event GeneratedLevel OnGenerateLevel;
+    public event GeneratedLevel OnGeneratedLevel;
 
     public Dungeon dungeon;
 
@@ -29,8 +29,8 @@ public class LevelGenerator : MonoBehaviour
         gridSizeY = Mathf.RoundToInt(worldSize.y); // 그리드의 세로 크기
         CreateRooms(); // 방 생성 함수 호출
         SetRoomDoors(); // 방의 문 설정 함수 호출
-        OnGenerateLevel?.Invoke(rooms, takenPositions);
-        DrawMap(); // 맵 그리는 함수 호출
+        OnGeneratedLevel?.Invoke(rooms, takenPositions);
+        // DrawMap(); // 맵 그리는 함수 호출
         // GetComponent<SheetAssigner>().Assign(rooms); // 방의 정보를 다른 스크립트로 전달하는 함수 호출
     }
 
