@@ -22,7 +22,7 @@ public class RoomGenerator : MonoBehaviour
 
             if (rooms[tempGridX, tempGridY] == null)  return;
 
-            Instantiate(SelectRoom(rooms[tempGridX, tempGridY]), roomsParent);
+            Instantiate(SelectRoom(rooms[tempGridX, tempGridY]), new Vector3((int)takenPositions[i].x * 40, (int)takenPositions[i].y * 40), transform.rotation, roomsParent);
 
             Debug.Log(rooms[tempGridX, tempGridY].direction);
         }
