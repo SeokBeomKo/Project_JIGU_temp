@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class RoomGenerator : MonoBehaviour
 {
+    public delegate void TransmitRoomHandle(Room room, Vector2 grid);
+    public event TransmitRoomHandle onTransmitRoom;
+
     [SerializeField] public List<RoomList> roomLists;
     [SerializeField] public Transform roomsParent;
     private List<RoomList> copyLists;
@@ -25,7 +28,14 @@ public class RoomGenerator : MonoBehaviour
 
             if (rooms[tempGridX, tempGridY] == null)  return;
 
-            Instantiate(SelectRoom(rooms[tempGridX, tempGridY]), new Vector3((int)takenPositions[i].x * 40, (int)takenPositions[i].y * 40), transform.rotation, roomsParent);
+            Room createdRoom = Instantiate(
+                SelectRoom(rooms[tempGridX, tempGridY]), 
+                new Vector3((int)takenPositions[i].x * 40, (int)takenPositions[i].y * 40), 
+                transform.rotation, 
+                roomsParent)
+                .GetComponent<Room>();
+
+            onTransmitRoom?.Invoke(createdRoom, new Vector2(tempGridX, tempGridY));
         }
     }
 

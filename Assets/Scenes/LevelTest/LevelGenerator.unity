@@ -219,6 +219,7 @@ MonoBehaviour:
   takenPositions: []
   worldSize: {x: 10, y: 10}
   numberOfRooms: 15
+  tempPlayer: {fileID: 1095950467}
 --- !u!4 &414404826
 Transform:
   m_ObjectHideFlags: 0
@@ -508,12 +509,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1095950467 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4751551519706520791, guid: f45c340c5d24d47f4ac96da73cfefa68, type: 3}
+  m_PrefabInstance: {fileID: 1015532239}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1095950471 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4751551519706520796, guid: f45c340c5d24d47f4ac96da73cfefa68, type: 3}
   m_PrefabInstance: {fileID: 1015532239}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1095950467}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8f32f1deb985d742bf08b64f0fb9fee, type: 3}
@@ -524,7 +530,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4751551519706520797, guid: f45c340c5d24d47f4ac96da73cfefa68, type: 3}
   m_PrefabInstance: {fileID: 1015532239}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1095950467}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0aeec052b7086494caac63d57ea8bb36, type: 3}
