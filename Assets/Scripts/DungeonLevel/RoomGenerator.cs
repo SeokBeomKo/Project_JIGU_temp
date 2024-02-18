@@ -31,9 +31,12 @@ public class RoomGenerator : MonoBehaviour
 
     private GameObject SelectRoom(RoomData room)
     {
-        int random = Random.Range(0, copyLists[(int)room.direction].room.Count);
-        GameObject selectedRoom = copyLists[(int)room.direction].room[random];
-        copyLists[(int)room.direction].room.RemoveAt(random);
+        Debug.Log("Room direction: " + (int)room.direction);
+        Debug.Log("copyLists size: " + copyLists.Count);
+
+        int random = Random.Range(0, copyLists[(int)room.direction - 1].room.Count);
+        GameObject selectedRoom = copyLists[(int)room.direction - 1].room[random];
+        copyLists[(int)room.direction - 1].room.RemoveAt(random);
         return selectedRoom;
     }
 
