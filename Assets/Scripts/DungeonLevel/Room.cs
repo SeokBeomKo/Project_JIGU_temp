@@ -19,11 +19,6 @@ public class Room : MonoBehaviour
         if (RDoor != null) RDoor.onEnterDoor += MoveRightward;
         if (DDoor != null) DDoor.onEnterDoor += MoveDownward;
         if (LDoor != null) LDoor.onEnterDoor += MoveLeftward;
-
-        if (UDoor != null) UDoor.Initialize(Vector2.down);
-        if (RDoor != null) RDoor.Initialize(Vector2.left);
-        if (DDoor != null) DDoor.Initialize(Vector2.up);
-        if (LDoor != null) LDoor.Initialize(Vector2.right);
     }
 
     public void MoveUpward()

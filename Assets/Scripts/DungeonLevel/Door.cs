@@ -7,11 +7,13 @@ public class Door : MonoBehaviour
     [HideInInspector] public delegate void EnterDoorHandle();
     [HideInInspector] public event EnterDoorHandle onEnterDoor;
 
-    [SerializeField] public Vector3 enterPosition;
+    [HideInInspector] public Vector3 enterPosition;
 
-    public void Initialize(Vector3 direction)
+    [SerializeField] public Transform enterTransform; 
+
+    private void Awake() 
     {
-        enterPosition = transform.position + direction;
+        enterPosition = enterTransform.position;
     }
 
     private void OnTriggerEnter2D(Collider2D other) 
