@@ -9,11 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627f53791b42d4bf3ac7b7cfed1c63f5, type: 3}
-  m_Name: FutureGirl
+  m_Script: {fileID: 11500000, guid: 3db29c6e9e47d454488e6c6cdd2f39b7, type: 3}
+  m_Name: TestSo
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
-  type: 1
-  maxSpeed: 0
-  moveSpeed: 0
-  jumpForce: 0
+  statsArray:
+  - name: "\uACE0\uC11D\uBC94"
+    birthday: 1
+    sex: M
+  - name: "\uAE40\uD55C\uACB0"
+    birthday: 1
+    sex: F
+  - name: "\uC54C\uBE60\uBABD"
+    birthday: 1
+    sex: F
