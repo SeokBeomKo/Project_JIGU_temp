@@ -31,9 +31,6 @@ public class RoomGenerator : MonoBehaviour
 
     private GameObject SelectRoom(RoomData room)
     {
-        Debug.Log("Room direction: " + (int)room.direction);
-        Debug.Log("copyLists size: " + copyLists.Count);
-
         int random = Random.Range(0, copyLists[(int)room.direction - 1].room.Count);
         GameObject selectedRoom = copyLists[(int)room.direction - 1].room[random];
         copyLists[(int)room.direction - 1].room.RemoveAt(random);
@@ -42,9 +39,6 @@ public class RoomGenerator : MonoBehaviour
 
     private void ListCopy()
     {
-        copyLists = roomLists.ConvertAll(roomList => 
-            new RoomList { 
-                room = new List<GameObject>(roomList.room) 
-            });
+        copyLists = roomLists.ConvertAll(roomList => roomList.DeepCopy());
     }
 }
