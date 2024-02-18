@@ -2,28 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using System.IO;
 
 public class GoogleSheetTest : MonoBehaviour
 {
-    public readonly string ADDRESS = "https://docs.google.com/spreadsheets/d/1xGNPbePoOnsaKqLi-TXz-PoukBWAYeE_O_enQ0k_cxk";
-    public readonly string RANGE = "B2:D";
-    public readonly long SHEET_ID = 0;
-
     public TestSO testSO;
+    public const string ADDRESS = "https://docs.google.com/spreadsheets/d/1xGNPbePoOnsaKqLi-TXz-PoukBWAYeE_O_enQ0k_cxk";
+
+    public string path;
+
+    private void Awake() 
+    {
+        path = Application.persistentDataPath;
+
+        if (!System.IO.Directory.Exists(path))
+        {
+            System.IO.Directory.CreateDirectory(path);
+        }
+    }
 
     IEnumerator Start() 
     {
-        string URL = GetTSVAdress(ADDRESS, RANGE, SHEET_ID);
+        string URL = GetTSVAdress(ADDRESS, "B2:D");
 
         UnityWebRequest www = UnityWebRequest.Get(URL);
         yield return www.SendWebRequest();
 
         string data = www.downloadHandler.text;
-        //Debug.Log(data);
         SetSO(data);
+
+        SaveJson(path);
     }
 
-    public static string GetTSVAdress(string address, string range, long sheedID) 
+    public static string GetTSVAdress(string address, string range, long sheedID = 0) 
     {
         return $"{address}/export?format=tsv&range={range}&gid={sheedID}";
     }
@@ -41,13 +52,24 @@ public class GoogleSheetTest : MonoBehaviour
             {
                 if(testSO != null) 
                 {
-                    Stats stat = testSO.statsArray[i];
-
-                    stat.name = column[0];
-                    stat.birthday = int.Parse(column[1]);
-                    stat.sex = column[2];
+                    testSO.statsArray[i].name = column[0];
+                    testSO.statsArray[i].birthday = int.Parse(column[1]);
+                    testSO.statsArray[i].sex = column[2];
                 }
             }
         }
     }
+
+    public void SaveJson(string path)
+    {
+        string data = JsonUtility.ToJson(testSO);
+        File.WriteAllText(path, data);
+    }
+
+    public void LoadJson(string path)
+    {
+        string data = File.ReadAllText(path);
+        testSO = JsonUtility.FromJson<TestSO>(data);
+    }
+    
 }

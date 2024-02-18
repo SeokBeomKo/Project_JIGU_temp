@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statsArray:
   - name: "\uACE0\uC11D\uBC94"
-    birthday: 1
-    sex: M
+    birthday: 1009
+    sex: "M\r"
   - name: "\uAE40\uD55C\uACB0"
-    birthday: 1
-    sex: F
+    birthday: 927
+    sex: "F\r"
   - name: "\uC54C\uBE60\uBABD"
-    birthday: 1
+    birthday: 1206
     sex: F
