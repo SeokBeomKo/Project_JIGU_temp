@@ -19,20 +19,39 @@ public class GoogleSheetTest : MonoBehaviour
     IEnumerator Start() 
     {
         string URL = GetTSVAdress(ADDRESS, "A2:D");
-
         UnityWebRequest www = UnityWebRequest.Get(URL);
         yield return www.SendWebRequest();
-
         string data = www.downloadHandler.text;
+
         SetSO(data);
 
         SaveJson(path);
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.L))
+        {
+            SaveJson(path);
+            print(path + " ø° ¿˙¿Âµ ");
+        }
+
+        if(Input.GetKeyDown(KeyCode.M))
+        {
+            LoadJson(path);
+        }
     }
 
 
     public static string GetTSVAdress(string address, string range, long sheedID = 0) 
     {
         return $"{address}/export?format=tsv&range={range}&gid={sheedID}";
+    }
+
+    private float GetVersion(string tsv)
+    {
+        string[] row = tsv.Split('\n');
+        return float.Parse(row[0].Split('\t')[0]);
     }
 
     private void SetSO(string tsv)
@@ -66,7 +85,14 @@ public class GoogleSheetTest : MonoBehaviour
 
     public void LoadJson(string path)
     {
+        if (!File.Exists(path))
+        {
+            Debug.Log("File does not exist : " + path);
+            return;
+        }
+
         string jsonData = File.ReadAllText(path);
-        testSO = JsonUtility.FromJson<TestSO>(jsonData);
+        JsonUtility.FromJsonOverwrite(jsonData, testSO);
+        Debug.Log("Loaded data from " + path);
     }
 }

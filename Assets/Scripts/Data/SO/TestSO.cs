@@ -10,7 +10,9 @@ public class Stats
     public string sex;
 }
 
+
 [CreateAssetMenu(fileName = "TestSo", menuName = "scriptableObject/TestSo")]
+[System.Serializable]
 public class TestSO : ScriptableObject
 {
     public float version;
