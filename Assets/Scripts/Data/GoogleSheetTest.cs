@@ -18,14 +18,19 @@ public class GoogleSheetTest : MonoBehaviour
 
     IEnumerator Start() 
     {
+        LoadJson(path);
+
         string URL = GetTSVAdress(ADDRESS, "A2:D");
         UnityWebRequest www = UnityWebRequest.Get(URL);
         yield return www.SendWebRequest();
         string data = www.downloadHandler.text;
 
-        SetSO(data);
+        if (GetVersion(data) != testSO.version || !File.Exists(path)) // 버전이 다르거나 Json 파일이 없을 때
+        {
+            SetSO(data);
+            SaveJson(path);
+        }
 
-        SaveJson(path);
     }
 
     private void Update()
@@ -33,7 +38,6 @@ public class GoogleSheetTest : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.L))
         {
             SaveJson(path);
-            print(path + " 에 저장됨");
         }
 
         if(Input.GetKeyDown(KeyCode.M))
@@ -81,6 +85,7 @@ public class GoogleSheetTest : MonoBehaviour
     {
         string jsonData = JsonUtility.ToJson(testSO);
         File.WriteAllText(path, jsonData);
+        Debug.Log("Saved data to " + path);
     }
 
     public void LoadJson(string path)
