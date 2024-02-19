@@ -13,5 +13,6 @@ public class Stats
 [CreateAssetMenu(fileName = "TestSo", menuName = "scriptableObject/TestSo")]
 public class TestSO : ScriptableObject
 {
+    public float version;
     public Stats[] statsArray;
 }

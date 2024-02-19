@@ -8,22 +8,17 @@ public class GoogleSheetTest : MonoBehaviour
 {
     public TestSO testSO;
     public const string ADDRESS = "https://docs.google.com/spreadsheets/d/1xGNPbePoOnsaKqLi-TXz-PoukBWAYeE_O_enQ0k_cxk";
+    string path;
 
-    public string path;
-
-    private void Awake() 
+    private void Awake()
     {
-        path = Application.persistentDataPath;
-
-        if (!System.IO.Directory.Exists(path))
-        {
-            System.IO.Directory.CreateDirectory(path);
-        }
+        path = Path.Combine(Application.dataPath + "/Data/", "testData.json");
+        // Path.Combine(Application.persistentDataPath, "database.json"); <- 안드로이드용
     }
 
     IEnumerator Start() 
     {
-        string URL = GetTSVAdress(ADDRESS, "B2:D");
+        string URL = GetTSVAdress(ADDRESS, "A2:D");
 
         UnityWebRequest www = UnityWebRequest.Get(URL);
         yield return www.SendWebRequest();
@@ -34,6 +29,7 @@ public class GoogleSheetTest : MonoBehaviour
         SaveJson(path);
     }
 
+
     public static string GetTSVAdress(string address, string range, long sheedID = 0) 
     {
         return $"{address}/export?format=tsv&range={range}&gid={sheedID}";
@@ -43,33 +39,34 @@ public class GoogleSheetTest : MonoBehaviour
     {
         string[] row = tsv.Split('\n');
         int rowSize = row.Length;
-        int columnSize = row[0].Split('\t').Length;
+        int columnSize = row[0].Split('\t').Length; 
 
         for(int i = 0; i < rowSize; i++)
         {
             string[] column = row[i].Split('\t');
-            for(int j = 0; j < columnSize; j++)
+            if(i == 0)
             {
-                if(testSO != null) 
-                {
-                    testSO.statsArray[i].name = column[0];
-                    testSO.statsArray[i].birthday = int.Parse(column[1]);
-                    testSO.statsArray[i].sex = column[2];
-                }
+                testSO.version = float.Parse(column[0]);
+            }
+
+            for(int j = 1; j < columnSize; j++)
+            {
+                testSO.statsArray[i].name = column[1];
+                testSO.statsArray[i].birthday = int.Parse(column[2]);
+                testSO.statsArray[i].sex = column[3];
             }
         }
     }
 
     public void SaveJson(string path)
     {
-        string data = JsonUtility.ToJson(testSO);
-        File.WriteAllText(path, data);
+        string jsonData = JsonUtility.ToJson(testSO);
+        File.WriteAllText(path, jsonData);
     }
 
     public void LoadJson(string path)
     {
-        string data = File.ReadAllText(path);
-        testSO = JsonUtility.FromJson<TestSO>(data);
+        string jsonData = File.ReadAllText(path);
+        testSO = JsonUtility.FromJson<TestSO>(jsonData);
     }
-    
 }
