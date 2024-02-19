@@ -67,17 +67,15 @@ public class GoogleSheetTest : MonoBehaviour
         for(int i = 0; i < rowSize; i++)
         {
             string[] column = row[i].Split('\t');
+
             if(i == 0)
             {
                 testSO.version = float.Parse(column[0]);
             }
 
-            for(int j = 1; j < columnSize; j++)
-            {
-                testSO.statsArray[i].name = column[1];
-                testSO.statsArray[i].birthday = int.Parse(column[2]);
-                testSO.statsArray[i].sex = column[3];
-            }
+            testSO.statsArray[i].name = column[1];
+            testSO.statsArray[i].birthday = int.Parse(column[2]);
+            testSO.statsArray[i].sex = column[3];
         }
     }
 
