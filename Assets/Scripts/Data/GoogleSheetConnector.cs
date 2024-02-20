@@ -7,7 +7,7 @@ public class GoogleSheetConnector : MonoBehaviour
 {
     public const string baseAddress = "https://docs.google.com/spreadsheets/d/1nEMMqBP4vUj9vt2tmw5d5_yJQw_p5tS096BvNCqwQU8";
 
-    public IEnumerator LoadGoogleSheetData(string range, long sheetID)
+    public IEnumerator LoadGoogleData(string range, long sheetID)
     {
         string URL = GetGoogleAddress(range, sheetID);
         UnityWebRequest www = UnityWebRequest.Get(URL);
@@ -18,5 +18,11 @@ public class GoogleSheetConnector : MonoBehaviour
     private static string GetGoogleAddress(string range, long sheetID)
     {
         return $"{baseAddress}/export?format=tsv&range={range}&gid={sheetID}";
+    }
+
+    private float GetGoogleVersion(string tsv)
+    {
+        string[] row = tsv.Split('\n');
+        return float.Parse(row[0].Split('\t')[0]);
     }
 }

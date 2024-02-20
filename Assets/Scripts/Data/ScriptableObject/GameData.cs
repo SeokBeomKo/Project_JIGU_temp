@@ -8,5 +8,5 @@ public abstract class GameData : ScriptableObject
     public long sheetID;
     public string jsonFileName;
 
-    public abstract void SetScriptable(string tsv);
+    public abstract void SetScriptableObject(string tsv);
 }

@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3db29c6e9e47d454488e6c6cdd2f39b7, type: 3}
   m_Name: TestSo
   m_EditorClassIdentifier: 
+  version: 1.3
   statsArray:
-  - name: "\uACE0\uC11D\uBC94"
+  - name: "\uACE0\uBD09\uBC25"
     birthday: 1009
     sex: "M\r"
-  - name: "\uAE40\uD55C\uACB0"
+  - name: "\uAE30\uB9F9\uACB0"
     birthday: 927
     sex: "F\r"
   - name: "\uC54C\uBE60\uBABD"
