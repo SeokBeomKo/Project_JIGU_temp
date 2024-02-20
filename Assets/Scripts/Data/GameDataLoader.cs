@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class GameDataLoader : MonoBehaviour
 {
-    GameData[] gameDataList;
-    GoogleSheetConnector googleSheet;
-    JsonConnector json;
+    public ScriptableObject[] gameDataList;
+    //public GoogleSheetConnector googleSheet;
+    public JsonConnector json;
 
     private void Start()
     {
-        json.LoadFile("Version", gameDataList[0]); // version 반환하는 함수 
-        StartCoroutine(googleSheet.LoadGoogleData("A2", 0));
+        /*json.LoadFile("Version", gameDataList[0]); // version 반환하는 함수 
+        StartCoroutine(googleSheet.LoadGoogleData("A2", 0)); */
 
+        //json.SaveFile(gameDataList[0].name, (GameData<T>)gameDataList[0].SetScriptableObject("Data"));
         
     }
 }

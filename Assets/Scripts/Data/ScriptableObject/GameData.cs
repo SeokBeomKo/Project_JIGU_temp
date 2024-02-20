@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class GameData : ScriptableObject
+
+public abstract class GameData<T> : ScriptableObject
 {
     [Header("시트의 범위")]
     public string range;
@@ -11,5 +12,5 @@ public abstract class GameData : ScriptableObject
     [Header("저장할 Json 파일 이름")]
     public string jsonFileName;
 
-    public abstract void SetScriptableObject(string tsv);
+    public abstract T SetScriptableObject(string tsv);
 }

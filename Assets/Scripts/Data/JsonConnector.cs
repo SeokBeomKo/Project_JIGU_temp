@@ -5,16 +5,16 @@ using System.IO;
 
 public class JsonConnector : MonoBehaviour
 {
-    public void SaveFile(string fileName, GameData gameData)
+    public void SaveFile(string fileName, ScriptableObject SO)
     {
         string path = SetFilePath(fileName);
 
-        string jsonData = JsonUtility.ToJson(gameData);
+        string jsonData = JsonUtility.ToJson(SO);
         File.WriteAllText(path, jsonData);
         Debug.Log("Saved data to " + path);
     }
 
-    public void LoadFile(string fileName, GameData gameData)
+    public void LoadFile(string fileName, ScriptableObject SO)
     {
         string path = SetFilePath(fileName);
 
@@ -25,7 +25,7 @@ public class JsonConnector : MonoBehaviour
         }
 
         string jsonData = File.ReadAllText(path);
-        JsonUtility.FromJsonOverwrite(jsonData, gameData);
+        JsonUtility.FromJsonOverwrite(jsonData, SO);
         Debug.Log("Loaded data from " + path);
     }
 

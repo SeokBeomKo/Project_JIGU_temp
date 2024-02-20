@@ -19,12 +19,11 @@ public struct Data
 
 
 [CreateAssetMenu(menuName = "Data/RedHoodData")]
-public class RedHoodData : GameData
+public class RedHoodData : GameData<Data>
 {
     public Data redHood;
 
-
-    public override void SetScriptableObject(string tsv)
+    public override Data SetScriptableObject(string tsv)
     {
         string[] row = tsv.Split('\n');
         int rowSize = row.Length;
@@ -35,5 +34,7 @@ public class RedHoodData : GameData
             string[] column = row[i].Split('\t');
             
         }
+
+        return redHood;
     }
 }

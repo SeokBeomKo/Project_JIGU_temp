@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 [CreateAssetMenu(menuName = "Data/VersionData")]
-public class VersionData : GameData
-{
+public class VersionData : GameData<float>
+{ 
     public float version;
 
-    public override void SetScriptableObject(string tsv)
+    public override float SetScriptableObject(string tsv)
     {
         string[] row = tsv.Split('\n');
         int rowSize = row.Length;
@@ -18,10 +20,7 @@ public class VersionData : GameData
             string[] column = row[i].Split('\t');
             version = float.Parse(column[0]);
         }
-    }
 
-    public float GetVersionData()
-    {
-        return version;
+        return 2f;
     }
 }
