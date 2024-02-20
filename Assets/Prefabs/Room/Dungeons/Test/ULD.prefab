@@ -16958,7 +16958,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enterPosition: {x: 0, y: 0, z: 0}
-  enterTransform: {fileID: 0}
+  enterTransform: {fileID: 3653599229756890743}
 --- !u!19719996 &5317184912896254969
 TilemapCollider2D:
   m_ObjectHideFlags: 0
@@ -17955,7 +17955,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enterPosition: {x: 0, y: 0, z: 0}
-  enterTransform: {fileID: 0}
+  enterTransform: {fileID: 3904116258328876877}
 --- !u!19719996 &683314466199001383
 TilemapCollider2D:
   m_ObjectHideFlags: 0
@@ -18413,7 +18413,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2759029913835971399}
   - component: {fileID: 7166545473941539511}
-  - component: {fileID: -5741750363289153652}
+  - component: {fileID: 5303013688077309623}
   m_Layer: 0
   m_Name: ULD
   m_TagString: Untagged
@@ -18455,7 +18455,7 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
---- !u!114 &-5741750363289153652
+--- !u!114 &5303013688077309623
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -18464,7 +18464,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6769351548152651460}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e5ff331fc769cd46958912e5f2abd93, type: 3}
+  m_Script: {fileID: 11500000, guid: 0b1ef328ec160416bb86df4e5192c090, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   UDoor: {fileID: 6439417975642873446}
@@ -18653,7 +18653,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enterPosition: {x: 0, y: 0, z: 0}
-  enterTransform: {fileID: 0}
+  enterTransform: {fileID: 8914731275589789572}
 --- !u!19719996 &5560066797011128711
 TilemapCollider2D:
   m_ObjectHideFlags: 0

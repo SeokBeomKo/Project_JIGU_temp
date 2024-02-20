@@ -18124,7 +18124,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3454988916190968504}
   - component: {fileID: 5866778812944820909}
-  - component: {fileID: -9137745820173222033}
+  - component: {fileID: 6606794481598406120}
   m_Layer: 0
   m_Name: RUL
   m_TagString: Untagged
@@ -18166,7 +18166,7 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
---- !u!114 &-9137745820173222033
+--- !u!114 &6606794481598406120
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -18175,7 +18175,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6324537554775980964}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e5ff331fc769cd46958912e5f2abd93, type: 3}
+  m_Script: {fileID: 11500000, guid: 0b1ef328ec160416bb86df4e5192c090, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   UDoor: {fileID: 5549456044335946256}

@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 48876580}
   - component: {fileID: 48876579}
   m_Layer: 0
-  m_Name: RoomRoot
+  m_Name: RoomGenerator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
