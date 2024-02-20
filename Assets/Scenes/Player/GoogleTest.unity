@@ -296,6 +296,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameDataList:
   - {fileID: 11400000, guid: 6a7ef849a05644f40a480b9d07684126, type: 2}
+  - {fileID: 11400000, guid: 515bf7117d6af8f4a992cebc1c6c9dc7, type: 2}
   json: {fileID: 1538865503}
 --- !u!4 &1538865505
 Transform:

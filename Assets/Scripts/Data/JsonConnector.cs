@@ -5,7 +5,7 @@ using System.IO;
 
 public class JsonConnector : MonoBehaviour
 {
-    public void SaveFile(string fileName, ScriptableObject SO)
+    public void SaveFile(string fileName, object SO)
     {
         string path = SetFilePath(fileName);
 
@@ -14,7 +14,7 @@ public class JsonConnector : MonoBehaviour
         Debug.Log("Saved data to " + path);
     }
 
-    public void LoadFile(string fileName, ScriptableObject SO)
+    public void LoadFile(string fileName, object SO)
     {
         string path = SetFilePath(fileName);
 
@@ -27,6 +27,7 @@ public class JsonConnector : MonoBehaviour
         string jsonData = File.ReadAllText(path);
         JsonUtility.FromJsonOverwrite(jsonData, SO);
         Debug.Log("Loaded data from " + path);
+        Debug.Log(SO);
     }
 
     private string SetFilePath(string fileName)
