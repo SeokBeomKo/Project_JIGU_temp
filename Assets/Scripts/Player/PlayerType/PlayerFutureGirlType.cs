@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerFutureGirlType : PlayerType
 {
-    // ========== Dodge Stateß ==========
+    // ========== Dodge State ==========
     public override void DodgeFixedUpdate()
     {
         player.eightWayDash();

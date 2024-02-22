@@ -263,8 +263,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58dc320e37c18e544863d25df88b4b36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 1582645419}
-  stateMachine: {fileID: 1582645425}
+  controller: {fileID: 1360792809}
+  stateMachine: {fileID: 1360792811}
   inputHandler: {fileID: 1834140241}
 --- !u!4 &239627514
 Transform:
@@ -2379,6 +2379,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1360792809 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4751551519706520796, guid: f45c340c5d24d47f4ac96da73cfefa68, type: 3}
+  m_PrefabInstance: {fileID: 4751551520845347618}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8f32f1deb985d742bf08b64f0fb9fee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1360792811 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4751551519706520797, guid: f45c340c5d24d47f4ac96da73cfefa68, type: 3}
+  m_PrefabInstance: {fileID: 4751551520845347618}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0aeec052b7086494caac63d57ea8bb36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1582645419 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5967115969992984148, guid: 42c1fd21bc0e34bfba7482bf1884f281, type: 3}
@@ -3353,6 +3375,14 @@ PrefabInstance:
     - target: {fileID: 4751551519706520791, guid: f45c340c5d24d47f4ac96da73cfefa68, type: 3}
       propertyPath: m_Name
       value: Player_RedHood
+      objectReference: {fileID: 0}
+    - target: {fileID: 4751551519706520796, guid: f45c340c5d24d47f4ac96da73cfefa68, type: 3}
+      propertyPath: maxDashSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4751551519706520796, guid: f45c340c5d24d47f4ac96da73cfefa68, type: 3}
+      propertyPath: maxMoveSpeed
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f45c340c5d24d47f4ac96da73cfefa68, type: 3}

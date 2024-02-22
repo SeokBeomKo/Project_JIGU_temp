@@ -12,8 +12,8 @@ public class PlayerController : MonoBehaviour
     public GhostEffect ghost;
 
     [Header("이동 관련 값")]
-    public float maxSpeed;
-    public float moveSpeed;
+    private float moveSpeed = 1000;
+    public float maxMoveSpeed;
 
     [Header("방향 관련 값")]
     public int direction = 1;  // 1:R -1:L
@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
     [Header("대시 관련 값")]
     public bool isDash;
     public float dashTime;
+    public float maxDashSpeed;
     public Vector2 dashDirection;
 
     [Header("벽 슬라이드 관련 값")]
@@ -83,18 +84,27 @@ public class PlayerController : MonoBehaviour
 
     public void SetMoveSpeed()
     {
-        if(Mathf.Abs(rigid.velocity.x) > maxSpeed)
+        if(Mathf.Abs(rigid.velocity.x) > maxMoveSpeed)
         {
             float dir = isRight ? 1 : -1;
-            rigid.velocity = new Vector2(maxSpeed * dir, rigid.velocity.y);
+            rigid.velocity = new Vector2(maxMoveSpeed * dir, rigid.velocity.y);
         }
     }
 
     public void SetDashSpeed()
     {
-        if(Mathf.Abs(rigid.velocity.x) > maxSpeed || Mathf.Abs(rigid.velocity.y) > maxSpeed)
+        if (Mathf.Abs(rigid.velocity.x) > maxDashSpeed)
         {
-            rigid.velocity = new Vector2(dashDirection.x * maxSpeed, dashDirection.y * maxSpeed);
+            float dir = isRight ? 1 : -1;
+            rigid.velocity = new Vector2(maxDashSpeed * dir, rigid.velocity.y);
+        }
+    }
+
+    public void SetEightDashSpeed()
+    {
+        if(Mathf.Abs(rigid.velocity.x) > maxDashSpeed || Mathf.Abs(rigid.velocity.y) > maxDashSpeed)
+        {
+            rigid.velocity = new Vector2(dashDirection.x * maxDashSpeed, dashDirection.y * maxDashSpeed);
         }
     }
 
@@ -114,20 +124,20 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 dir = isRight ? Vector2.right : Vector2.left;
         rigid.AddForce(dir * moveSpeed, ForceMode2D.Impulse);
-        SetMoveSpeed();
+        SetDashSpeed();
     }
 
     public void Dash()
     {
         Vector2 dir = isRight ? Vector2.right : Vector2.left;
         rigid.velocity = new Vector2(dir.x * moveSpeed, 0f);
-        SetMoveSpeed();
+        SetDashSpeed();
     }
 
     public void eightWayDash()
     {
         rigid.velocity = dashDirection * moveSpeed;
-        SetDashSpeed();
+        SetEightDashSpeed();
     }
 
     public void Jump()

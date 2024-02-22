@@ -34,20 +34,12 @@ public abstract class PlayerType : MonoBehaviour
     public virtual void DodgeOnEnter()
     {
         player.PlayAnimation("Dodge");
-
-        player.moveSpeed *= 5f;
-        player.maxSpeed *= 2f;
-
         player.ghost.makeGhost = true;
     }
 
     public virtual void DodgeOnExit()
     {
         player.rigid.velocity = new Vector2(0, player.rigid.velocity.y);
-
-        player.moveSpeed /= 5f;
-        player.maxSpeed /= 2f;
-
         player.ghost.makeGhost = false;
     }
 

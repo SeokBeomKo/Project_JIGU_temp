@@ -11,7 +11,7 @@ public class PlayerRedHoodType : PlayerType
 
     float skillTime = 5.0f;
     bool isChange = false;
-
+    int curIndex;
 
     // ========== redefinition function ==========
     public override void RiseUpdate()
@@ -71,23 +71,15 @@ public class PlayerRedHoodType : PlayerType
     public override void DodgeOnEnter()
     {
         player.PlayAnimation("Dodge");
-
-        player.moveSpeed *= 5f;
-        player.maxSpeed *= 2f;
     }
 
     public override void DodgeOnExit()
     {
         player.rigid.velocity = new Vector2(0, player.rigid.velocity.y);
-
-        player.moveSpeed /= 5f;
-        player.maxSpeed /= 2f;
     }
 
 
     // ========== Attack State ==========
-    int curIndex;
-
     public override void AttackUpdate()
     {
         // 공격 입력 값 delay
